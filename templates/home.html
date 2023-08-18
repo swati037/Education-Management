@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Home Page</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="static/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<script src="https://kit.fontawesome.com/8e3bbe9588.js" crossorigin="anonymous"></script>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="static/main.css">
+<!--===============================================================================================-->
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<!--===============================================================================================-->
+	<script>
+		$(document).ready(function(){
+			$(".navlinks").click(function(){
+			   $(".navbar").toggleClass("collapse");
+			});
+		});
+	</script>
+<!--===============================================================================================-->
+</head>
+
+<body>
+	<div class="container-login1001" style="background-image: url('static/images/bg-01.jpg');">
+		<div class="wrap-login100 cont">
+	<div class="navbar">
+  		<div class="topnavbar">
+		    <div class="navlinks">
+		    	<i class="fa fa-list fa-lg"></i>
+		    </div>
+		    <div class="topmenu">
+		    <div class="logo">Home Page</div>
+		      	<ul>
+		        <li><a href="#"><i class="fas fa-user"></i>
+				 {% for user1 in users1 %}
+                     {% if request.session.email == user1.email %}
+                      <span>Hii, {{user1.username}}</span>
+                     {% endif %}
+                     {% endfor %}
+				</a>
+				</li>
+				<li>
+				{% for user1 in users1 %}
+                     {% if request.session.email == user1.email %}
+                <a href="/logout1">
+                  <span>Logout</span>
+				  {% endif %}
+                {% endfor %}
+                </a>
+				</li>
+		      </ul>
+		    </div>
+  		</div>
+  
+		  <div class="sidebar">
+		     <ul>
+		        <li><a href="/home" class="active">
+		          <span class="icon"><i class="fa fa-dashcube fa-lg"></i></span>
+		          <span class="title">Dashboard</span></a></li>
+		        <li><a href="/assignment">	
+		          <span class="icon"><i class="fa fa-folder-open fa-lg"></i></span>
+		          <span class="title">Assignment</span></a></li>
+ 				<li><a href="/test">
+		          <span class="icon"><i class="fa fa-desktop"></i></span>
+		          <span class="title">Test</span></a></li>
+		         <li><a href="/meeting">
+		          <span class="icon"><i class="fa fa-video fa-lg"></i></span>
+		          <span class="title">Meet</span></a></li>
+		              
+		      </ul>
+		  </div>
+
+  		<h1 style="margin-top: 50px; text-align:center; padding-left:150px">SUBJECTS</h1>
+		  
+         <div class="limiter">
+			<div class="">
+			<div class="wrap-table100">
+				<div class="table100 ver5">
+					
+						<div class="table100-body">
+        	<table cellpadding="0" cellspacing="0" border="0" align="right" style="padding-left:25%;">
+        	
+
+  						<h3><td>SUBJECT</td>
+                </h3>
+			
+		<tr>
+                <td >{% for i in subs %}
+                      <p>{{i.subjectname}}</p>
+                     {% endfor %}</td>
+                
+            </tr>
+            </table>
+      </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+                       
+       
+	
+</body>
+</html>

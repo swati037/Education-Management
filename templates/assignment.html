@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Assignment</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="static/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<script src="https://kit.fontawesome.com/8e3bbe9588.js" crossorigin="anonymous"></script>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="static/main.css">
+<!--===============================================================================================-->
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<!--===============================================================================================-->
+	<script>
+		
+		$(document).ready(function(){
+			$(".navlinks").click(function(){
+			   $(".navbar").toggleClass("collapse");
+			});
+		});
+
+	</script>
+
+	<script>
+	function addRow(){
+             
+             		
+             	
+                var newRow = table.insertRow(table.rows.length/2+1);
+                  
+                  // add cells to the row
+                  var cel1 = newRow.insertCell(0);
+                  var cel2 = newRow.insertCell(1);
+                  var cel3 = newRow.insertCell(2);
+                  
+                 
+                  
+                  // add values to the cells
+                  cel1.innerHTML = arr[i].subname2;
+                  cel2.innerHTML = arr[i].adate;
+                  
+                  cel3.innerHTML = arr[i].atime;
+                
+            
+
+
+             	
+             }
+
+		/*var arr = new Array();
+             function addData(){
+             	getData();
+             	arr.push({
+             		assignname:document.getElementById('assignname').value,
+             		subname:document.getElementById('subname').value,             		
+             		day:document.getElementById('day').value,
+             		appt:document.getElementById('appt').value,
+             	});
+
+
+             	localStorage.setItem("localData",JSON.stringify(arr));
+             	addRow();
+             }
+            function getData(){
+            		var str = localStorage.getItem("localData");
+            		if(str != null)
+            			arr = JSON.parse(str);
+
+            }
+			
+            
+
+             function addRow(){
+             	getData();
+             	var table = document.getElementsByTagName('table')[0];
+							var x = table.rows.length;
+             	while(--x)
+             	{
+             		table.deleteRow(x);
+             	}
+           	
+             	for(i=0; i<arr.length;i++)
+             	{
+             		var assignname = document.getElementById('assignname').value;
+             		var subname = document.getElementById('subname').value;
+             		var day = document.getElementById('day').value;
+             		var appt = document.getElementById('appt').value;
+                 
+                var newRow = table.insertRow(table.rows.length/2+1);
+                  
+                  // add cells to the row
+                  var cel1 = newRow.insertCell(0);
+                  var cel2 = newRow.insertCell(1);
+                  var cel3 = newRow.insertCell(2);
+                  var cel4 = newRow.insertCell(3);
+                  
+                 
+                  
+                  // add values to the cells
+                  cel1.innerHTML = arr[i].assignname;
+                  cel2.innerHTML = arr[i].subname;
+                  
+                  cel3.innerHTML = arr[i].day;
+                  cel4.innerHTML = arr[i].appt;
+
+             	}
+
+
+             	
+             }
+*/
+
+          /*  function addRow()
+            {
+                
+                var subname = document.getElementById('subname').value;
+                var studentname = document.getElementById('studentname').value;                                  
+                  var table = document.getElementsByTagName('table')[0];
+                  
+                 
+                  var newRow = table.insertRow(table.rows.length/2+1);
+                  
+                  // add cells to the row
+                  var cel1 = newRow.insertCell(0);
+                  
+                 
+                  
+                  // add values to the cells
+                  cel1.innerHTML = subname;
+                  
+            }
+            */
+        </script>
+    
+<!--===============================================================================================-->
+<style>
+table1, td, th {
+height: 50px;
+  border: 1px solid black;
+}
+
+table {
+  border-collapse: collapse;
+  width: 50%;
+   margin-left:30%; 
+
+}
+
+td {
+	height: 50px;
+  text-align: center;
+}
+
+</style>
+</head>
+
+<body>
+	<div class="container-login1001" style="background-image: url('static/images/bg-01.jpg');">
+		<div class="wrap-login100 cont">
+	<div class="navbar">
+  		<div class="topnavbar">
+		    <div class="navlinks">
+		    	<i class="fa fa-list fa-lg"></i>
+		    </div>
+		    <div class="topmenu">
+		    <div class="logo">Assignment</div>
+		     	<ul>
+		        <li><a href="#"><i class="fas fa-user"></i>
+				 {% for user1 in users1 %}
+                     {% if request.session.email == user1.email %}
+                      <span>Hii, {{user1.username}}</span>
+                     {% endif %}
+                     {% endfor %}
+				</a>
+				</li>
+				<li>
+				{% for user1 in users1 %}
+                     {% if request.session.email == user1.email %}
+                <a href="/logout1">
+                  <span>Logout</span>
+				  {% endif %}
+                {% endfor %}
+                </a>
+				</li>
+		      </ul>
+		    </div>
+  		</div>
+  
+		  <div class="sidebar">
+		     <ul>
+		        <li><a href="/home" class="active">
+		          <span class="icon"><i class="fa fa-dashcube fa-lg"></i></span>
+		          <span class="title">Dashboard</span></a></li>
+		        <li><a href="/assignment">	
+		          <span class="icon"><i class="fa fa-folder-open fa-lg"></i></span>
+		          <span class="title">Assignment</span></a></li>
+ 				<li><a href="/test">
+		          <span class="icon"><i class="fa fa-desktop"></i></span>
+		          <span class="title">Test</span></a></li>
+		         <li><a href="/meeting">
+		          <span class="icon"><i class="fa fa-video fa-lg"></i></span>
+		          <span class="title">Meet</span></a></li>
+		              
+		      </ul>
+		  </div>
+		
+		  
+       <h1 style="margin-top: 50px; text-align:center; padding-left:150px">ASSIGNMENT</h1>
+      <div class="limiter">
+			<div class="">
+			<div class="wrap-table100">
+				<div class="table100 ver5">
+					
+						<div class="table100-body">
+        	<table cellpadding="0" cellspacing="0" border="0" align="right">
+        	
+
+          
+		          
+  					
+                <h3><td>SUBJECT NAME</td>
+                <td>DUE DAY</td>
+                <td>DUE TIME</td>
+				<td>QUESTIONS</td></h3>
+    					
+               
+            
+            <tr>
+                <h3><td >{% for i in ass %}
+                     
+			
+                      <p>{{i.subjectname}}</p>
+					  
+                 
+                     {% endfor %}</td>
+				 <td>{% for i in ass %}
+                    
+					
+                      <p>{{i.date}}</p>
+					  
+            
+                     {% endfor %}</td>
+                 <td>{% for i in ass %}
+                   
+					
+                      <p>{{i.time}}</p>
+					  
+                   
+                     {% endfor %}</td> 
+					 <td>{% for i in ass %}
+                   
+					
+                      <p>{{i.question}}</p>
+					  
+                   
+                     {% endfor %}</td></h3>
+                
+			</tr>
+            
+  		
+
+
+    					
+               
+            
+            
+            
+  		
+
+
+
+  	
+                       
+      </table>
+      </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    </body>
+
+</html>
+	

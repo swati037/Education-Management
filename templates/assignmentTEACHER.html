@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Assignment</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="static/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<script src="https://kit.fontawesome.com/8e3bbe9588.js" crossorigin="anonymous"></script>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="static/main.css">
+<!--===============================================================================================-->
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<!--===============================================================================================-->
+	<script>
+		
+		$(document).ready(function(){
+			$(".navlinks").click(function(){
+			   $(".navbar").toggleClass("collapse");
+			});
+		});
+
+	</script>
+
+	<script>
+		var arr = new Array();
+             function addData(){
+             	getData();
+             	arr.push({
+             		
+             		subname:document.getElementById('subname2').value,             		
+             		day:document.getElementById('adate').value,
+             		appt:document.getElementById('atime').value,
+             	});
+
+
+             	localStorage.setItem("localData",JSON.stringify(arr));
+             	addRow();
+             }
+            function getData(){
+            		var str = localStorage.getItem("localData");
+            		if(str != null)
+            			arr = JSON.parse(str);
+
+            }
+            
+
+             function addRow(){
+             
+             		
+             		var subname = document.getElementById('subname2').value;
+             		var day = document.getElementById('adate').value;
+             		var appt = document.getElementById('atime').value;
+                 
+                var newRow = table.insertRow(table.rows.length/2+1);
+                  
+                  // add cells to the row
+                  var cel1 = newRow.insertCell(0);
+                  var cel2 = newRow.insertCell(1);
+                  var cel3 = newRow.insertCell(2);
+                  
+                 
+                  
+                  // add values to the cells
+                  cel1.innerHTML = arr[i].subname2;
+                  cel2.innerHTML = arr[i].adate;
+                  
+                  cel3.innerHTML = arr[i].atime;
+                
+            
+
+
+             	
+             }
+
+
+          /*  function addRow()
+            {
+                
+                var subname = document.getElementById('subname').value;
+                var studentname = document.getElementById('studentname').value;                                  
+                  var table = document.getElementsByTagName('table')[0];
+                  
+                 
+                  var newRow = table.insertRow(table.rows.length/2+1);
+                  
+                  // add cells to the row
+                  var cel1 = newRow.insertCell(0);
+                  
+                 
+                  
+                  // add values to the cells
+                  cel1.innerHTML = subname;
+                  
+            }
+            */
+        </script>
+    
+<!--===============================================================================================-->
+
+</head>
+
+<body>
+
+		<div class="cont">
+	<div class="navbar">
+  		<div class="topnavbar">
+		    <div class="navlinks">
+		    	<i class="fa fa-list fa-lg"></i>
+		    </div>
+		    <div class="topmenu">
+		    <div class="logo">Add Assignment</div>
+		      <ul>
+		      	<ul>
+		        <li><a href="#"><i class="fas fa-user"></i>
+				 {% for user in users %}
+                     {% if request.session.email1 == user.email1 %}
+                      <span>Hii, {{user.username1}}</span>
+                     {% endif %}
+                     {% endfor %}
+				</a>
+				</li>
+				<li>
+				{% for user in users %}
+                     {% if request.session.email1 == user.email1 %}
+                <a href="/logout">
+                  <span>Logout</span>
+				  {% endif %}
+                {% endfor %}
+                </a>
+				</li>
+		      </ul>
+		        
+		      </ul>
+		    </div>
+  		</div>
+  
+		  <div class="sidebar">
+		      <ul>
+		        <li><a href="/home1"class="active">
+		          <span class="icon"><i class="fa fa-dashcube fa-lg"></i></span>
+		          <span class="title">Dashboard</span></a></li>
+		        <li><a href="/assignmentT">	
+		          <span class="icon"><i class="fa fa-folder-open fa-lg"></i></span>
+		          <span class="title">Assignment</span></a></li>
+ 				<li><a href="/testT">
+		          <span class="icon"><i class="fa fa-desktop"></i></span>
+		          <span class="title">Test</span></a></li>
+		         <li><a href="/meeting1">
+		          <span class="icon"><i class="fa fa-video fa-lg"></i></span>
+		          <span class="title">Meet</span></a></li>
+		              
+		      </ul>
+		  </div>
+		  <form method="POST" action='/assign'>
+			{% csrf_token %}
+		<h1>ADD ASSIGNMENT</h1>
+			<h2>Subject Name: &ensp;&ensp;<input type="text" name="subname2" id="subname2" /><br/><br/></h2> 
+			<h2>Questions: &ensp;&ensp;&ensp;<textarea rows="2" cols="70" placeholder="Type your questions here....." name="assignname" id="assignname"></textarea><br/><br/></h2>
+			<h2>Due Date: &ensp;&ensp;<input type="date" name="adate" id="day"/> &ensp;&ensp;&ensp;<input type="time" name="atime" id="appt"/><br/><br/></h2> 
+			
+        <button class="first-btn v-col" onclick="addRow();">Add Assignment</button><br/><br/>
+        </form>
+       <div class="limiter">
+			<div class="">
+			<div class="wrap-table100">
+				<div class="table100 ver5">
+					
+						<div class="table100-body">
+        	<table cellpadding="0" cellspacing="0" border="0">
+        	
+        	
+
+          
+		          
+                <h3><td>SUBJECT NAME</td>
+                <td>DUE DAY</td>
+                <td>DUE TIME</td></h3>
+    					
+               
+            
+            <tr>
+                <h3><td >{% for i in ass %}
+                     {% if request.session.email1 == i.email %}
+			
+                      <p>{{i.subjectname}}</p>
+					  
+                     {% endif %}
+                     {% endfor %}</td>
+				 <td>{% for i in ass %}
+                     {% if request.session.email1 == i.email %}
+					
+                      <p>{{i.date}}</p>
+					  
+                     {% endif %}
+                     {% endfor %}</td>
+                 <td>{% for i in ass %}
+                     {% if request.session.email1 == i.email %}
+					
+                      <p>{{i.time}}</p>
+					  
+                     {% endif %}
+                     {% endfor %}</td></h3>
+                
+			</tr>
+            
+  		
+
+
+
+  	
+                       
+      </table>
+      </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+
+	addRow();
+</script>
+    </body>
+
+</html>
+	
